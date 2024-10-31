@@ -1,0 +1,49 @@
+name: Publish Release
+
+description: "Delete old release and publishes new Release"
+
+inputs:
+  package-version:
+    description: "Package Version"
+    required: true
+  delete-existing:
+    description: "Bool if you want to delete existing releases"
+    required: false
+  pre-release:
+    description: "Bool if you want to pre-release"
+    required: false
+  py-version:
+    description: "The python version to run the tests on"
+    required: true
+
+
+runs:
+  using: "composite"
+  steps:
+    - name: Delete existing release
+      if: inputs.delete-existing
+      run: gh release delete ${{ inputs.package-version }} --cleanup-tag --yes
+      continue-on-error: true
+      shell: bash
+      env:
+        GH_TOKEN: ${{ github.token }}
+
+    - name: Create release and upload assets
+      run: gh release create ${{ inputs.package-version }} dist/* --generate-notes
+      shell: bash
+      env:
+        GH_TOKEN: ${{ github.token }}
+
+    - name: Set release as draft
+      if: inputs.draft-release
+      run: gh release edit ${{ inputs.package-version }} --draft --verify-tag
+      shell: bash
+      env:
+        GH_TOKEN: ${{ github.token }}
+
+    - name: Set release as pre-release
+      if: inputs.pre-release
+      run: gh release edit ${{ inputs.package-version }} --prerelease --verify-tag
+      shell: bash
+      env:
+        GH_TOKEN: ${{ github.token }}
