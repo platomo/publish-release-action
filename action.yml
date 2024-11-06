@@ -15,6 +15,9 @@ inputs:
   py-version:
     description: "The python version to run the tests on"
     required: true
+  draft-release:
+    description: "Is the Release only a draft?"
+    required: true
 
 
 runs:
