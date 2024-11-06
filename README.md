@@ -1,24 +1,24 @@
 
 # Publish Release
 
-Diese GitHub-Action löscht optional alte Veröffentlichungen und erstellt eine neue Veröffentlichung für ein angegebenes Paket.
+This GitHub Action optionally deletes old releases and creates a new release for a specified package.
 
-## Beschreibung
+## Description
 
-Diese Action bietet eine Möglichkeit, eine neue Version eines Pakets zu veröffentlichen, indem sie eine alte Version löscht (falls konfiguriert) und eine neue erstellt. Optional kann die Veröffentlichung als Entwurf oder Vorabversion markiert werden.
+This Action provides a way to publish a new version of a package by deleting an old version (if configured) and creating a new one. The release can optionally be marked as a draft or pre-release.
 
-## Eingaben
+## Inputs
 
-| Name              | Beschreibung                                         | Erforderlich | Standardwert |
-|-------------------|------------------------------------------------------|--------------|--------------|
-| `package-version` | Die Versionsnummer des Pakets, das veröffentlicht wird | Ja           | Keine        |
-| `delete-existing` | Gibt an, ob bestehende Veröffentlichungen gelöscht werden sollen | Nein          | Keine        |
-| `pre-release`     | Gibt an, ob es sich um eine Vorabversion handelt      | Nein          | Keine        |
-| `py-version`      | Die Python-Version, die für die Tests verwendet wird  | Ja           | Keine        |
+| Name              | Description                                             | Required | Default      |
+|-------------------|---------------------------------------------------------|----------|--------------|
+| `package-version` | The version number of the package to be released        | Yes      | None         |
+| `delete-existing` | Indicates whether to delete existing releases           | No       | None         |
+| `pre-release`     | Indicates if this is a pre-release                      | No       | None         |
+| `py-version`      | The Python version used for the tests                   | Yes      | None         |
 
-## Verwendung
+## Usage
 
-Erstellen Sie eine Workflow-Datei (z. B. `.github/workflows/release.yml`) und verwenden Sie diese Action wie folgt:
+Create a workflow file (e.g., `.github/workflows/release.yml`) and use this Action as follows:
 
 ```yaml
 name: Publish New Release
@@ -45,14 +45,13 @@ jobs:
           py-version: "3.9"
 ```
 
-## Schritte im Workflow
+## Workflow Steps
 
-1. **Bestehende Veröffentlichung löschen** (optional): Löscht die vorhandene Veröffentlichung und das zugehörige Tag, falls `delete-existing` auf `true` gesetzt ist.
-2. **Veröffentlichung erstellen und Assets hochladen**: Erstellt die neue Veröffentlichung und lädt alle Dateien im `dist/`-Ordner hoch.
-3. **Veröffentlichung als Entwurf markieren** (optional): Markiert die Veröffentlichung als Entwurf, wenn `draft-release` auf `true` gesetzt ist.
-4. **Vorabversion festlegen** (optional): Setzt die Veröffentlichung als Vorabversion, wenn `pre-release` auf `true` gesetzt ist.
+1. **Delete Existing Release** (optional): Deletes the existing release and associated tag if `delete-existing` is set to `true`.
+2. **Create Release and Upload Assets**: Creates the new release and uploads all files in the `dist/` folder.
+3. **Mark Release as Draft** (optional): Marks the release as a draft if `draft-release` is set to `true`.
+4. **Set Pre-release** (optional): Marks the release as a pre-release if `pre-release` is set to `true`.
 
-## Erforderliche Berechtigungen
+## Required Permissions
 
-Diese Action benötigt ein GitHub-Token (`GH_TOKEN`), das automatisch im Workflow-Umfeld zur Verfügung steht, um die Veröffentlichung zu erstellen und zu bearbeiten.
-
+This Action requires a GitHub token (`GH_TOKEN`), which is automatically provided in the workflow environment, to create and manage the release.
