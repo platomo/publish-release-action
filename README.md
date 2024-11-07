@@ -1,4 +1,3 @@
-
 # Publish Release
 
 This GitHub Action optionally deletes old releases and creates a new release for a specified package.
@@ -9,12 +8,12 @@ This Action provides a way to publish a new version of a package by deleting an 
 
 ## Inputs
 
-| Name              | Description                                             | Required | Default      |
-|-------------------|---------------------------------------------------------|----------|--------------|
-| `package-version` | The version number of the package to be released        | Yes      | None         |
-| `delete-existing` | Indicates whether to delete existing releases           | No       | None         |
-| `pre-release`     | Indicates if this is a pre-release                      | No       | None         |
-| `py-version`      | The Python version used for the tests                   | Yes      | None         |
+| Name              | Description                                      | Required | Default |
+| ----------------- | ------------------------------------------------ | -------- | ------- |
+| `package-version` | The version number of the package to be released | Yes      | None    |
+| `delete-existing` | Indicates whether to delete existing releases    | No       | None    |
+| `pre-release`     | Indicates if this is a pre-release               | No       | None    |
+| `py-version`      | The Python version used for the tests            | Yes      | None    |
 
 ## Usage
 
@@ -26,7 +25,7 @@ name: Publish New Release
 on:
   push:
     tags:
-      - 'v*.*.*'
+      - "v*.*.*"
 
 jobs:
   release:

@@ -16,7 +16,6 @@ inputs:
     description: "The python version to run the tests on"
     required: true
 
-
 runs:
   using: "composite"
   steps:
