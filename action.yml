@@ -19,7 +19,6 @@ inputs:
     description: "Is the Release only a draft?"
     required: true
 
-
 runs:
   using: "composite"
   steps:
