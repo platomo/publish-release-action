@@ -4,16 +4,16 @@ This GitHub Action optionally deletes old releases and creates a new release for
 
 ## Description
 
-This Action provides a way to publish a new version of a package by deleting an old version (if configured) and creating a new one. The release can optionally be marked as a draft or pre-release.
+This Action provides a way to publish a new version of a package by deleting an old version (if configured) and creating a new one. The release can optionally be marked as a draft or prerelease.
 
 ## Inputs
 
-| Name              | Description                                     | Required | Default |
-| ----------------- | ----------------------------------------------- | -------- | ------- |
+| Name              | Description                                      | Required | Default |
+| ----------------- | ------------------------------------------------ | -------- | ------- |
 | `package-version` | The version number of the package to be released | Yes      | None    |
-| `delete-existing` | Indicates whether to delete existing releases   | No       | None    |
-| `pre-release`     | Indicates if this is a prerelease               | No       | None    |
-| `py-version`      | The Python version used for the tests           | Yes      | None    |
+| `delete-existing` | Indicates whether to delete existing releases    | No       | None    |
+| `pre-release`     | Indicates if this is a prerelease                | No       | None    |
+| `py-version`      | The Python version used for the tests            | Yes      | None    |
 
 ## Usage
 
